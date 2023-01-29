@@ -1,8 +1,8 @@
 com/increff/invoice/model/OrderItemData.class
 com/increff/invoice/model/OrderItemForm.class
 com/increff/invoice/spring/SpringConfig.class
-com/increff/invoice/util/GenerateXML.class
 com/increff/invoice/spring/DbConfig.class
+com/increff/invoice/dto/DtoHelper.class
 com/increff/invoice/spring/WebInitializer.class
 com/increff/invoice/controller/AboutApiController.class
 com/increff/invoice/dto/InvoiceMasterDto.class
@@ -11,4 +11,3 @@ com/increff/invoice/controller/InvoiceMasterController.class
 com/increff/invoice/spring/ControllerConfig.class
 com/increff/invoice/model/AboutAppData.class
 com/increff/invoice/model/InvoiceForm.class
-com/increff/invoice/util/GeneratePDF.class
