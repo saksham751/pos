@@ -19,7 +19,7 @@
                     <fo:block font-size="20.0pt" font-family="serif"
                               padding-after="3.0pt" space-before="5.0pt" text-align="center"
                               border-bottom-style="solid" border-bottom-width="1.0pt">
-                        <xsl:text>Increff-POS</xsl:text>
+                        <xsl:text>Grocery-Point:Invoice</xsl:text>
                     </fo:block>
                     <fo:block>
 
