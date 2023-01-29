@@ -19,14 +19,14 @@ public class GeneratePDF {
         // the XSL FO file
         File xsltFile = new File("template.xsl");
         // the XML file which provides the input
-        StreamSource xmlSource = new StreamSource(new File("billDataXML.xml"));
+        StreamSource xmlSource = new StreamSource(new File("invoiceDataXML.xml"));
         // create an instance of fop factory
         FopFactory fopFactory = FopFactory.newInstance();
         // a user agent is needed for transformation
         FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
         // Setup output
         OutputStream out;
-        out = new java.io.FileOutputStream("bill.pdf");
+        out = new java.io.FileOutputStream("invoice.pdf");
         try {
             // Construct fop with desired output format
             Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
@@ -65,7 +65,7 @@ public class GeneratePDF {
         byte[] encodedBytes = null;
         try {
             createPDF();
-            File file = new File("bill.pdf");
+            File file = new File("invoice.pdf");
             byte[] bytes = new byte[(int) file.length()];
             encodedBytes = java.util.Base64.getEncoder().encode(bytes);
         } catch (FOPException | TransformerException | IOException e) {
