@@ -10,6 +10,7 @@
         <module name="grocery-point" />
         <module name="invoice" />
         <module name="package" />
+        <module name="pos" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
