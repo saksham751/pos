@@ -15,24 +15,6 @@
             </fo:layout-master-set>
             <fo:page-sequence master-reference="simple"
                               initial-page-number="1">
-<!--                <fo:static-content flow-name="xsl-region-before">-->
-<!--                    <fo:block font-size="20.0pt" font-family="serif"-->
-<!--                              padding-after="3.0pt" space-before="5.0pt" text-align="center"-->
-<!--                              border-bottom-style="solid" border-bottom-width="1.0pt">-->
-<!--                        <xsl:text>Grocery-Point:Invoice</xsl:text>-->
-<!--                    </fo:block>-->
-<!--                    <fo:block>-->
-
-<!--                    </fo:block>-->
-<!--                </fo:static-content>-->
-<!--                <fo:static-content flow-name="xsl-region-after">-->
-<!--                    <fo:block font-size="12.0pt" font-family="monospace"-->
-<!--                              padding-after="2.0pt" space-before="2.0pt" text-align="center"-->
-<!--                              border-top-style="solid" border-bottom-width="1.0pt">-->
-<!--                        <xsl:text>Page</xsl:text>-->
-<!--                        <fo:page-number />-->
-<!--                    </fo:block>-->
-<!--                </fo:static-content>-->
                 <fo:flow flow-name="xsl-region-body">
                     <xsl:apply-templates select="invoice" />
                 </fo:flow>

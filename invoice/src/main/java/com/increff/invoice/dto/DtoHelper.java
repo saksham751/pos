@@ -10,10 +10,8 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Result;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXResult;
@@ -29,17 +27,28 @@ import java.util.List;
 
 public class DtoHelper {
     public static void createPDF() throws Exception{
+//        File xmlfile = new File("src\\main\\resources\\xml\\Invoice.xml");
+//        File xsltfile = new File("src\\main\\resources\\xsl\\Invoice.xsl");
+//        File pdfDir = new File("./src/main/resources/pdf");
+
         File xsltFile = new File("template.xsl");
-        StreamSource xmlSource = new StreamSource(new File("invoiceDataXML.xml"));
-        FopFactory fopFactory = FopFactory.newInstance();
+        StreamSource xmlSource = new StreamSource(new File("invoiceData.xml"));
+            FopFactory fopFactory = FopFactory.newInstance();
         FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
+        //        pdfDir.mkdirs();
+//        File pdfFile = new File(pdfDir, "invoice.pdf");
+//        System.out.println(pdfFile.getAbsolutePath());
         OutputStream out;
         out = new java.io.FileOutputStream("invoice.pdf");
+
         try {
             Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
             TransformerFactory factory = TransformerFactory.newInstance();
             Transformer transformer = factory.newTransformer(new StreamSource(xsltFile));
             Result res = new SAXResult(fop.getDefaultHandler());
+//            Source src = new StreamSource(xmlfile);
+//            // Resulting SAX events (the generated FO) must be piped through to FOP
+//            Result res = new SAXResult(fop.getDefaultHandler())
             transformer.transform(xmlSource, res);
         } finally {
             out.close();
@@ -60,8 +69,8 @@ public class DtoHelper {
         servletOutputStream.close();
     }
 
-    public static void createXml(InvoiceForm orderDetailsData) throws Exception {
-        String xmlFilePath = "invoiceDataXML.xml";
+    public static void createTemplate(InvoiceForm orderDetailsData) throws Exception {
+
         DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
         Document document = documentBuilder.newDocument();
@@ -115,6 +124,7 @@ public class DtoHelper {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         DOMSource domSource = new DOMSource(document);
+        String xmlFilePath = "invoiceData.xml";
         StreamResult streamResult = new StreamResult(new File(xmlFilePath));
         transformer.transform(domSource, streamResult);
     }

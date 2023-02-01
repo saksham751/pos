@@ -1,17 +1,20 @@
 package com.increff.invoice.dto;
 
 import com.increff.invoice.model.InvoiceForm;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+
 import java.io.File;
 import java.util.Base64;
 
-@Component
+import static org.apache.commons.io.FileUtils.readFileToByteArray;
+
+@Service
 public class InvoiceMasterDto {
     public String get(InvoiceForm orderDetailsData) throws Exception{
-        DtoHelper.createXml(orderDetailsData);
+        DtoHelper.createTemplate(orderDetailsData);
         DtoHelper.createPDF();
-        byte[] encodedBytes = org.apache.commons.io.FileUtils.readFileToByteArray(new File("invoice.pdf"));
-        String b64PDF = Base64.getEncoder().encodeToString(encodedBytes);
-        return b64PDF;
+        byte[] byteData = readFileToByteArray(new File("invoice.pdf"));
+        return(Base64.getEncoder().encodeToString(byteData));
     }
 }
